@@ -69,6 +69,45 @@ int main()
     return 0;
 }
 
+void displayBooks()
+{
+FILE *fp;
+struct Book b;
+fp = fopen("books.csv", "r");
+if (fp == NULL)
+{
+printf("\nNo records found!\n");
+return;
+}
+printf("\n================ BOOK RECORDS 
+================\n");
+printf("\n%-10s %-25s %-25s %-10s\n",
+"ID",
+"BOOK NAME",
+"AUTHOR",
+"QTY");
+printf("--------------------------------------------------------------------------\n");
+while (fscanf(fp,
+"%d,%99[^,],%99[^,],%d\n",
+&b.id
+,
+b.name
+,
+b.author
+,
+&b.quantity) == 4)
+{
+printf("%-10d %-25s %-25s %-10d\n",
+b.id
+,
+b.name
+,
+b.author
+,
+b.quantity);
+}
+fclose(fp);
+}
 void searchBook()
 {
 FILE *fp;
